@@ -15,18 +15,22 @@
 </p>
 
 <Grid>
-  <ThemeProvider dark>
-    <section>
-      <h2>A dark section</h2>
-      <p>Light color text</p>
-    </section>
-  </ThemeProvider>
-  <ThemeProvider default>
-    <section>
-      <h2>A default section</h2>
-      <p>Dark color text</p>
-    </section>
-  </ThemeProvider>
+  <GridItem>
+    <ThemeProvider dark>
+      <section>
+        <h2>A dark section</h2>
+        <p>Light color text</p>
+      </section>
+    </ThemeProvider>
+  </GridItem>
+  <GridItem>
+    <ThemeProvider default>
+      <section>
+        <h2>A default section</h2>
+        <p>Dark color text</p>
+      </section>
+    </ThemeProvider>
+  </GridItem>
 </Grid>
 
 <script>
@@ -38,7 +42,7 @@
       FontProvider: "../components/FontProvider.html",
       ThemeProvider: "../components/ThemeProvider.html",
       Grid: "../components/Grid.html",
-      GridItem: "../components/Grid.html"
+      GridItem: "../components/GridItem.html"
     }
   };
 </script>
