@@ -3,7 +3,7 @@
   "description": "",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev --hot=false",
+    "dev": "sapper dev --no-hot",
     "build": "sapper build",
     "export": "sapper export",
     "start": "node __sapper__/build",
@@ -19,9 +19,9 @@
   "devDependencies": {
     "reset-css": "^5.0.0",
     "npm-run-all": "^4.1.2",
-    "sapper": "^0.22.1",
+    "sapper": "^0.27.1",
     "sass": "^1.25.0",
-    "svelte": "^2.0.0",
+    "svelte": "^3.0.0",
     "svelte-loader": "^2.9.0",
     "svelte-preprocess": "3.3.0",
     "webpack": "^4.7.0"
