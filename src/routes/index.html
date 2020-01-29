@@ -1,0 +1,39 @@
+<svelte:head>
+  <title>Dogfood 🐶🍗🍖</title>
+</svelte:head>
+
+<p>
+  By default the headers on this all use serif fonts, while the body text uses
+  sans-serif fonts. But that can be overridden by adding a property called
+  'invert' to the FontProvider component.
+</p>
+<p>
+  Similarly, the default palette is darker text on light background, with a red
+  color for headers. This too can be changed with a property - using the 'dark'
+  palette these values are again inverted (more or less). You can see examples
+  of both of these variants in action below.
+</p>
+
+<ThemeProvider dark>
+  <section>
+    <h2>A dark section</h2>
+    <p>Light color text</p>
+  </section>
+</ThemeProvider>
+<ThemeProvider default>
+  <section>
+    <h2>A default section</h2>
+    <p>Dark color text</p>
+  </section>
+</ThemeProvider>
+
+<script>
+  export default {
+    components: {
+      PageHeader: "../components/PageHeader.html",
+      PageFooter: "../components/PageFooter.html",
+      FontProvider: "../components/FontProvider.html",
+      ThemeProvider: "../components/ThemeProvider.html"
+    }
+  };
+</script>

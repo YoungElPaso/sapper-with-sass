@@ -1,0 +1,40 @@
+<ThemeProvider default>
+  <FontProvider default>
+    <PageHeader>
+      <h1>Page Header</h1>
+    </PageHeader>
+    <main>
+      <svelte:component this="{child.component}" {...child.props} />
+    </main>
+  </FontProvider>
+</ThemeProvider>
+<ThemeProvider dark>
+  <FontProvider invert>
+    <PageFooter>
+      <h2>Page Footer</h2>
+      <p>Footer text</p>
+    </PageFooter>
+  </FontProvider>
+</ThemeProvider>
+
+<style lang="scss">
+  /* Load Layout Sass component.*/
+  @use "../sass/components/Layout.scss";
+
+  /* Local overrides */
+  $debug: false;
+  main {
+    background-color: $debug;
+  }
+</style>
+
+<script>
+  export default {
+    components: {
+      PageHeader: "../components/PageHeader.html",
+      PageFooter: "../components/PageFooter.html",
+      FontProvider: "../components/FontProvider.html",
+      ThemeProvider: "../components/ThemeProvider.html"
+    }
+  };
+</script>
