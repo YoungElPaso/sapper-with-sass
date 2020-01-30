@@ -1,5 +1,11 @@
-<div class="tp" class:default class:dark>
-  <slot></slot>
+<script>
+  export let dark;
+  export let light;
+</script>
+
+
+<div class="tp" class:light class:dark>
+	<slot></slot>
 </div>
 
 <style lang="scss">
@@ -7,7 +13,7 @@
   @use "../sass/components/ThemeProvider.scss" as TP;
   @use "sass:map";
 
-  .tp.default {
+  .tp.light {
     :global(h1),
     :global(h2),
     :global(h3) {
