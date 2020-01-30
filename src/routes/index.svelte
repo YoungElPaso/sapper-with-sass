@@ -1,3 +1,13 @@
+<script>
+  // TODO: add live-reload if possible.
+  import PageHeader from "../components/PageHeader.svelte";
+  import PageFooter from "../components/PageFooter.svelte";
+  import FontProvider from "../components/FontProvider.svelte";
+  import ThemeProvider from "../components/ThemeProvider.svelte";
+  import Grid from "../components/Grid.svelte";
+  import GridItem from "../components/GridItem.svelte";
+</script>
+
 <svelte:head>
   <title>Dogfood 🐶🍗🍖</title>
 </svelte:head>
@@ -14,7 +24,7 @@
   of both of these variants in action below.
 </p>
 
-<Grid>
+<Grid triple>
   <GridItem>
     <ThemeProvider dark>
       <section>
@@ -24,25 +34,19 @@
     </ThemeProvider>
   </GridItem>
   <GridItem>
-    <ThemeProvider default>
+    <ThemeProvider light>
       <section>
         <h2>A default section</h2>
         <p>Dark color text</p>
       </section>
     </ThemeProvider>
   </GridItem>
+  <GridItem>
+    <ThemeProvider dark>
+      <section>
+        <h2>Another dark section</h2>
+        <p>Dark color text</p>
+      </section>
+    </ThemeProvider>
+  </GridItem>
 </Grid>
-
-<script>
-  // TODO: add live-reload if possible.
-  export default {
-    components: {
-      PageHeader: "../components/PageHeader.html",
-      PageFooter: "../components/PageFooter.html",
-      FontProvider: "../components/FontProvider.html",
-      ThemeProvider: "../components/ThemeProvider.html",
-      Grid: "../components/Grid.html",
-      GridItem: "../components/GridItem.html"
-    }
-  };
-</script>

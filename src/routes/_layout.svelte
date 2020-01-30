@@ -1,10 +1,19 @@
-<ThemeProvider default>
-  <FontProvider default>
+<script>
+  import PageHeader from "../components/PageHeader.svelte";
+  import PageFooter from "../components/PageFooter.svelte";
+  import FontProvider from "../components/FontProvider.svelte";
+  import ThemeProvider from "../components/ThemeProvider.svelte";
+  import Grid from "../components/Grid.svelte";
+  import GridItem from "../components/GridItem.svelte";
+</script>
+
+<ThemeProvider light>
+  <FontProvider regular>
     <PageHeader>
       <h1>Page Header</h1>
     </PageHeader>
     <main>
-      <svelte:component this="{child.component}" {...child.props} />
+      <slot></slot>
     </main>
   </FontProvider>
 </ThemeProvider>
@@ -27,14 +36,3 @@
     background-color: $debug;
   }
 </style>
-
-<script>
-  export default {
-    components: {
-      PageHeader: "../components/PageHeader.html",
-      PageFooter: "../components/PageFooter.html",
-      FontProvider: "../components/FontProvider.html",
-      ThemeProvider: "../components/ThemeProvider.html"
-    }
-  };
-</script>
