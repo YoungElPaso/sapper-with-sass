@@ -1,9 +1,8 @@
 <style>
   .cntr {
-    position: relative
+    position: relative;
     max-width: 56em;
     margin: 0 auto;
-    background: red;
   }
 </style>
 
