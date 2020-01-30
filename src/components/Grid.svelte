@@ -1,3 +1,9 @@
+<script>
+	export let triple;
+	export let quad;
+	export let double;
+</script>
+
 <div class="gr" class:double class:triple class:quad>
   <slot />
 </div>

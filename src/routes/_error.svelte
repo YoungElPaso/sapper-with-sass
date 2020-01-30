@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>{status}</title>
+	<title>{status}</title>
 </svelte:head>
 
 <h1>{status}</h1>
@@ -33,10 +33,10 @@
   }
 </style>
 
-<script>
-  // export default {
-  // 	helpers: {
-  // 		dev: process.env.NODE_ENV === 'development'
-  // 	}
-  // };
+
+  <script>
+	export let status;
+	export let error;
+	const dev = process.env.NODE_ENV === "development";
 </script>
+
