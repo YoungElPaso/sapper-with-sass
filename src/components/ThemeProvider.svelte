@@ -1,4 +1,5 @@
 <script>
+  // TODO: clean these class variables up.
   export let dark;
   export let light;
 </script>
