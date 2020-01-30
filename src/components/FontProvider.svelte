@@ -1,16 +1,21 @@
-<div class="fp" class:default class:invert>
-  <slot></slot>
+<script>
+  export let regular;
+  export let invert;
+</script>
+
+<div class="fp" class:regular class:invert>
+	<slot></slot>
 </div>
 
 <style lang="scss">
   /* Load FontProvider Sass component.*/
   @use "../sass/components/FontProvider.scss" as FP;
 
-  .fp.default :global(h1),
-  .fp.default :global(h2) {
+  .fp.regular :global(h1),
+  .fp.regular :global(h2) {
     @include FP.headers;
   }
-  .fp.default :global(p) {
+  .fp.regular :global(p) {
     @include FP.regularText;
   }
 
