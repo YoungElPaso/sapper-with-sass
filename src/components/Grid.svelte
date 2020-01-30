@@ -9,6 +9,10 @@
 </div>
 
 <style lang="scss">
+  .gr {
+    grid-auto-rows: minmax(100px, auto);
+    gap: 0.5em;
+  }
   .gr,
   .gr.double {
     display: grid;

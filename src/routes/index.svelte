@@ -24,7 +24,7 @@
   of both of these variants in action below.
 </p>
 
-<Grid triple>
+<Grid quad>
   <GridItem>
     <ThemeProvider dark>
       <section>
@@ -33,7 +33,7 @@
       </section>
     </ThemeProvider>
   </GridItem>
-  <GridItem>
+  <GridItem >
     <ThemeProvider light>
       <section>
         <h2>A default section</h2>
@@ -41,7 +41,7 @@
       </section>
     </ThemeProvider>
   </GridItem>
-  <GridItem>
+  <GridItem spanTwo>
     <ThemeProvider dark>
       <section>
         <h2>Another dark section</h2>

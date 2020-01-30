@@ -28,6 +28,7 @@
   }
 
   .tp.dark {
+    background-color: map.get(TP.$dark, bg);
     :global(h2) {
       color: map.get(TP.$dark, headercolor);
     }
@@ -36,7 +37,8 @@
     :global(section) {
       color: map.get(TP.$dark, textcolor);
     }
-    :global(section) {
+    :global(section),
+    :global(div) {
       background-color: map.get(TP.$dark, bg);
     }
   }
