@@ -9,24 +9,24 @@
 </script>
 
 <Container>
-<ThemeProvider light>
-  <FontProvider regular>
-    <PageHeader>
-      <h1>Page Header</h1>
-    </PageHeader>
-    <main>
-      <slot></slot>
-    </main>
-  </FontProvider>
-</ThemeProvider>
-<ThemeProvider dark>
-  <FontProvider invert>
-    <PageFooter>
-      <h2>Page Footer</h2>
-      <p>Footer text</p>
-    </PageFooter>
-  </FontProvider>
-</ThemeProvider>
+  <ThemeProvider light>
+    <FontProvider regular>
+      <PageHeader>
+        <h1>Page Header</h1>
+      </PageHeader>
+      <main>
+        <slot></slot>
+      </main>
+    </FontProvider>
+  </ThemeProvider>
+  <ThemeProvider dark>
+    <FontProvider invert>
+      <PageFooter>
+        <h2>Page Footer</h2>
+        <p>Footer text</p>
+      </PageFooter>
+    </FontProvider>
+  </ThemeProvider>
 </Container>
 
 <style lang="scss">

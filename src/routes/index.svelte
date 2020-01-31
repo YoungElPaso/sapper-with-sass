@@ -6,6 +6,7 @@
   import ThemeProvider from "../components/ThemeProvider.svelte";
   import Grid from "../components/Grid.svelte";
   import GridItem from "../components/GridItem.svelte";
+  import Lists from "../components/Lists.svelte";
 </script>
 
 <svelte:head>
@@ -23,6 +24,18 @@
   palette these values are again inverted (more or less). You can see examples
   of both of these variants in action below.
 </p>
+
+<ThemeProvider dark>
+  <section>
+    <h2>Here's a horizontal list </h2>
+    <Lists horizontal/>
+  </section>
+</ThemeProvider>
+
+<section>
+  <h2>Here's a vertical (regular) list </h2>
+  <Lists />
+</section>
 
 <Grid quad>
   <GridItem>
