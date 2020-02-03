@@ -7,10 +7,39 @@
   import Grid from "../components/Grid.svelte";
   import GridItem from "../components/GridItem.svelte";
   import Lists from "../components/Lists.svelte";
+
+  // Fake list data.
+  let fakeList = [
+    {
+      name: "Canadian Honey",
+      active: true,
+      count: 22,
+      slug: "canuckistani"
+    },
+    {
+      name: "NZ Honey",
+      active: true,
+      count: 10,
+      slug: "kiwistan"
+    },
+    {
+      name: "Greek Honey",
+      active: false,
+      count: 200,
+      slug: "greekish"
+    },
+    {
+      name: "Spanish Honey",
+      active: false,
+      count: 10,
+      slug: "spaneek"
+    }
+  ];
 </script>
 
 <svelte:head>
   <title>Dogfood 🐶🍗🍖</title>
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </svelte:head>
 
 <p>
@@ -27,14 +56,16 @@
 
 <ThemeProvider dark>
   <section>
-    <h2>Here's a horizontal list </h2>
-    <Lists horizontal/>
+    <h2>Here's a horizontal check list, collapsed shut (default) </h2>
+    <Lists horizontal title="Honey" />
   </section>
 </ThemeProvider>
 
 <section>
-  <h2>Here's a vertical (regular) list </h2>
-  <Lists />
+  <h2>Here's a vertical (regular) check list, already open </h2>
+    <Lists bulletStyle="none" 
+    items= {fakeList} title="More Honey" collapse=true
+  />
 </section>
 
 <Grid quad>

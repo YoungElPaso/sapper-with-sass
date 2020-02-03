@@ -15,7 +15,9 @@
   .fp.regular :global(h2) {
     @include FP.headers;
   }
-  .fp.regular :global(p) {
+  .fp.regular :global(p),
+  .fp.regular :global(ul),
+  .fp.regular :global(ol) {
     @include FP.regularText;
   }
 
