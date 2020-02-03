@@ -109,11 +109,13 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
   }
   ul.open-false {
     li {
+      // TODO: replace with animation.
       display: none;
     }
   }
   ul.open-true {
     li {
+      // TODO: replace with animation.
       display: block;
     }
   }
