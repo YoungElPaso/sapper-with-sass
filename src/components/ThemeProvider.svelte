@@ -16,8 +16,7 @@
 
   .tp.light {
     :global(h1),
-    :global(h2),
-    :global(h3) {
+    :global(h2) {
       color: TP.$headercolor;
     }
 
