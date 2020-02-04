@@ -78,5 +78,9 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
 </ul>
 
 <style lang="scss">
+  /* Imports basic Lists styling.*/
   @import "../sass/components/Lists.scss";
+
+  /* Imports basic Forms styling. TODO: add this file. */
+  /* @import "../sass/components/Forms.scss"; */
 </style>
