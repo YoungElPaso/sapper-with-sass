@@ -78,50 +78,5 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
 </ul>
 
 <style lang="scss">
-  ul {
-    list-style: disc;
-  }
-  ul.none {
-    list-style: none;
-    li {
-      padding-left: 1em;
-    }
-  }
-  /* Applicable to either type of list. */
-  .horizontal {
-    padding: 0;
-  }
-  .horizontal li {
-    display: inline-block;
-    border: 1px #aaa solid;
-    padding: 0.25em 0.5em;
-  }
-  li {
-    /* color: red; */
-    label {
-      font-weight: bold;
-    }
-  }
-  li {
-    .las {
-      font-size: 1.25em;
-    }
-  }
-  ul.open-false {
-    li {
-      // TODO: replace with animation.
-      display: none;
-    }
-  }
-  ul.open-true {
-    li {
-      // TODO: replace with animation.
-      display: block;
-    }
-  }
-  ul.open-true.horizontal {
-    li {
-      display: inline-block;
-    }
-  }
+  @import "../sass/components/Lists.scss";
 </style>
