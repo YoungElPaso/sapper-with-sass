@@ -1,0 +1,209 @@
+{
+  "limit": "20",
+  "id": "facetapi-facet-search-apisarnia-mcgill-fusion-block-mcgill-type-ss",
+  "searcher": "search_api@sarnia_mcgill_fusion",
+  "realmName": "block",
+  "facetName": "mcgill_type_ss",
+  "queryType": null,
+  "widget": "facetapi_dropdowns_checkbox_links",
+  "showMoreText": "Show more",
+  "showFewerText": "Show fewer",
+  "makeCheckboxes": 1,
+  "facetmeta": {
+    "snM7BSOC5XMK1y7MKTrLnXcglGItlx5j": "search_api@sarnia_mcgill_fusion:block:mcgill_faculty_ss",
+    "jnvI4o5AmuzvGpdnUmK8VDSTllq0isBz": "search_api@sarnia_mcgill_fusion:block:mcgill_language_s",
+    "FMCJjMKk3IjcS5wFs8aBsvHGiLY4IYY5": "search_api@sarnia_mcgill_fusion:block:mcgill_pubdate_dt",
+    "rtaAprCz6q67yno2pPQIsdKFKfOR4ot3": "search_api@sarnia_mcgill_fusion:block:mcgill_type_ss",
+    "zIH8EsYFkvWKeMtTZTGLEm1GrYlAarmk": "search_api@default_node_index:block:type",
+    "IPaCM7H1dF7Clj1WBtiZQw516MCvTYka": "search_api@default_node_index:block:field_tags"
+  },
+  "facetjson": {
+    "programs": {
+      "markup": "Programs",
+      "path": "search/mcgill/arts",
+      "html": false,
+      "indexed_value": "programs",
+      "count": 771,
+      "active": 1,
+      "item_parents": [],
+      "item_children": {
+        "programs-undergraduate": {
+          "markup": "Undergraduate",
+          "path": "search/mcgill/arts",
+          "html": false,
+          "indexed_value": "programs-undergraduate",
+          "count": 520,
+          "active": 0,
+          "item_parents": {
+            "programs": "programs"
+          },
+          "item_children": [],
+          "query": {
+            "f": [
+              "mcgill_type_ss:programs-masters",
+              "mcgill_type_ss:programs-undergraduate"
+            ]
+          }
+        },
+        "programs-masters": {
+          "markup": "Masters",
+          "path": "search/mcgill/arts",
+          "html": false,
+          "indexed_value": "programs-masters",
+          "count": 162,
+          "active": 1,
+          "item_parents": {
+            "programs": "programs"
+          },
+          "item_children": [],
+          "query": []
+        },
+        "programs-doctoral": {
+          "markup": "Doctoral",
+          "path": "search/mcgill/arts",
+          "html": false,
+          "indexed_value": "programs-doctoral",
+          "count": 56,
+          "active": 0,
+          "item_parents": {
+            "programs": "programs"
+          },
+          "item_children": [],
+          "query": {
+            "f": [
+              "mcgill_type_ss:programs-masters",
+              "mcgill_type_ss:programs-doctoral"
+            ]
+          }
+        },
+        "programs-cert-dip-conted": {
+          "markup": "Certificates, diplomas, and continuing studies",
+          "path": "search/mcgill/arts",
+          "html": false,
+          "indexed_value": "programs-cert-dip-conted",
+          "count": 33,
+          "active": 0,
+          "item_parents": {
+            "programs": "programs"
+          },
+          "item_children": [],
+          "query": {
+            "f": [
+              "mcgill_type_ss:programs-masters",
+              "mcgill_type_ss:programs-cert-dip-conted"
+            ]
+          }
+        }
+      },
+      "query": []
+    },
+    "news": {
+      "markup": "News & Stories",
+      "path": "search/mcgill/arts",
+      "html": false,
+      "indexed_value": "news",
+      "count": 3289,
+      "active": 0,
+      "item_parents": [],
+      "item_children": [],
+      "query": {
+        "f": ["mcgill_type_ss:programs-masters", "mcgill_type_ss:news"]
+      }
+    },
+    "!": {
+      "markup": "All other pages",
+      "path": "search/mcgill/arts",
+      "html": false,
+      "indexed_value": "!",
+      "count": 18174,
+      "active": 0,
+      "item_parents": [],
+      "item_children": [],
+      "query": {
+        "f": ["mcgill_type_ss:programs-masters", "mcgill_type_ss:!"]
+      }
+    },
+    "events": {
+      "markup": "Events",
+      "path": "search/mcgill/arts",
+      "html": false,
+      "indexed_value": "events",
+      "count": 18686,
+      "active": 0,
+      "item_parents": [],
+      "item_children": [],
+      "query": {
+        "f": ["mcgill_type_ss:programs-masters", "mcgill_type_ss:events"]
+      }
+    },
+    "courses": {
+      "markup": "Courses",
+      "path": "search/mcgill/arts",
+      "html": false,
+      "indexed_value": "courses",
+      "count": 7820,
+      "active": 0,
+      "item_parents": [],
+      "item_children": {
+        "courses-undergraduate": {
+          "markup": "Undergraduate",
+          "path": "search/mcgill/arts",
+          "html": false,
+          "indexed_value": "courses-undergraduate",
+          "count": 4409,
+          "active": 0,
+          "item_parents": {
+            "courses": "courses"
+          },
+          "item_children": [],
+          "query": {
+            "f": [
+              "mcgill_type_ss:programs-masters",
+              "mcgill_type_ss:courses-undergraduate"
+            ]
+          }
+        },
+        "courses-graduate": {
+          "markup": "Graduate",
+          "path": "search/mcgill/arts",
+          "html": false,
+          "indexed_value": "courses-graduate",
+          "count": 3425,
+          "active": 0,
+          "item_parents": {
+            "courses": "courses"
+          },
+          "item_children": [],
+          "query": {
+            "f": [
+              "mcgill_type_ss:programs-masters",
+              "mcgill_type_ss:courses-graduate"
+            ]
+          }
+        },
+        "courses-cert-dip-conted": {
+          "markup": "Certificates, diplomas, and continuing studies",
+          "path": "search/mcgill/arts",
+          "html": false,
+          "indexed_value": "courses-cert-dip-conted",
+          "count": 17,
+          "active": 0,
+          "item_parents": {
+            "courses": "courses"
+          },
+          "item_children": [],
+          "query": {
+            "f": [
+              "mcgill_type_ss:programs-masters",
+              "mcgill_type_ss:courses-cert-dip-conted"
+            ]
+          }
+        }
+      },
+      "query": {
+        "f": ["mcgill_type_ss:programs-masters", "mcgill_type_ss:courses"]
+      }
+    }
+  },
+  "notes": "need to strip out # and \" characters - TODO: handle in a PHP function."
+}

@@ -45,18 +45,33 @@
     }
   ];
 
+  async function getData() {
+    // Faking a request.
+    // let fakeRequest = new Promise((res, rej) => {
+    //   setTimeout(() => res(shmitems), 1500);
+    // });
+    // Getting data from JSON.
+    let response = await fetch("/facetdata.json");
+    let data = await response.json();
+    // let items = await fakeRequest;
+    let items = data.facetjson;
+    console.log(data);
+    items = Object.values(items);
+    console.log(items);
+    return items;
+  }
+
   // Sets the getItems property to the async function.
   let getItems = getData();
 
-  async function getData() {
-    // Faking a request.
-    let fakeRequest = new Promise((res, rej) => {
-      setTimeout(() => res(shmitems), 1500);
-    });
-
-    let items = await fakeRequest;
-    return items;
-  }
+  // function isActive(status) {
+  //   let active = status == 1 ? true : false;
+  // }
+  // let active;
+  // // $: realActive = (active == 1) ? true : false;
+  // $: realActive = function(active) {
+  //   return active == 1;
+  // };
 </script>
 
 <!-- Not really a generic list ATM but adaptable to be one.
@@ -74,16 +89,17 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
   {#await getItems}
     <li>Fetching data...</li>
   {:then items}
-    {#each items as {name, active, count, slug} }
+    <!-- {#each items as {name, active, count, slug} } -->
+    {#each items as {markup, active, count, indexed_value}}
       <li class:active>
-        <input hidden type="checkbox" bind:checked={active} id={slug} />
-        <label for={slug}>
+        <input type="checkbox" bind:checked={active} id={indexed_value+title.replace(/\s+/g, '')} />
+        <label for={indexed_value+title.replace(/\s+/g, '')}>
         {#if active}
           <i class="las la-check-square"></i>
         {:else}
           <i class="las la-stop"></i>
         {/if}
-        {name}
+        {markup} {active}
         </label> ({count})
       </li>
     {:else}
