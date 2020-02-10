@@ -1,5 +1,13 @@
 <script>
+  // Animation for collapse.
+  import { slide } from "svelte/transition";
+  import { quintOut } from "svelte/easing";
+
+  // An animate property.
+  // export let animate;
+
   // An class to switch to horizontal layout.
+
   export let horizontal;
 
   // Ditto for vertical.
@@ -55,14 +63,26 @@
     let data = await response.json();
     // let items = await fakeRequest;
     let items = data.facetjson;
-    console.log(data);
+    // console.log(data);
     items = Object.values(items);
-    console.log(items);
+    // console.log(items);
     return items;
   }
 
-  // Sets the getItems property to the async function.
-  let getItems = getData();
+  // LoadData prop.
+  // Controls recursion.
+  export let LoadData = false;
+
+  // Defaults to an empty array.
+  export let items = [];
+  let getItems;
+  if (LoadData) {
+    // Sets the getItems property to the async function.
+    getItems = getData();
+  } else {
+    getItems = Object.values(items);
+  }
+  // console.log("items", items);
 
   // function isActive(status) {
   //   let active = status == 1 ? true : false;
@@ -77,7 +97,7 @@
 <!-- Not really a generic list ATM but adaptable to be one.
 TODO: move this to a new component CheckList
 TODO: how do you do HOC or wrapped components in Svelte? -->
-<ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse}>
+{#if title}
   <h3 on:click="{()=> collapse= collapse? false:true }">
     {#if collapse}
       <i class="las la-arrow-up"></i>
@@ -86,12 +106,16 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
     {/if}
   {title || 'List Title'}
   </h3>
+  {/if}
+
+  <ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse} >
   {#await getItems}
     <li>Fetching data...</li>
   {:then items}
     <!-- {#each items as {name, active, count, slug} } -->
-    {#each items as {markup, active, count, indexed_value}}
-      <li class:active>
+    {#each items as {markup, active, count, indexed_value, item_children}}
+{#if collapse}
+      <li class:active transition:slide>
         <input type="checkbox" hidden bind:checked={active} id={indexed_value+title.replace(/\s+/g, '')} />
         <label for={indexed_value+title.replace(/\s+/g, '')}>
         {#if active}
@@ -101,11 +125,12 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
         {/if}
         {markup}
         </label> ({count})
+      {#if item_children}
+         <!-- TODO: need to rethink approach to transitions. Its a bit janky. Child list pops in and out of existence. -->
+          <svelte:self bulletStyle="none" items={item_children} title="" collapse />
+      {/if}
       </li>
-    {:else}
-      <li>Foo</li>
-      <li>Bar</li>
-      <li>Foobar</li>
+{/if}
     {/each}
   {:catch error}
     <li>Error!</li>
