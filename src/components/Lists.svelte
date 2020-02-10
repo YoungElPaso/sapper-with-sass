@@ -18,7 +18,7 @@
   export let title;
 
   // Default items.
-  export let items = [
+  export let shmitems = [
     {
       name: "Canadian Honey",
       active: false,
@@ -44,6 +44,19 @@
       slug: "spanish"
     }
   ];
+
+  // Sets the getItems property to the async function.
+  let getItems = getData();
+
+  async function getData() {
+    // Faking a request.
+    let fakeRequest = new Promise((res, rej) => {
+      setTimeout(() => res(shmitems), 1500);
+    });
+
+    let items = await fakeRequest;
+    return items;
+  }
 </script>
 
 <!-- Not really a generic list ATM but adaptable to be one.
@@ -58,23 +71,29 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
     {/if}
   {title || 'List Title'}
   </h3>
-  {#each items as {name, active, count, slug} }
-    <li class:active>
-      <input hidden type="checkbox" bind:checked={active} id={slug} />
-      <label for={slug}>
-      {#if active}
-        <i class="las la-check-square"></i>
-      {:else}
-        <i class="las la-stop"></i>
-      {/if}
-      {name}
-      </label> ({count})
-    </li>
-  {:else}
-    <li>Foo</li>
-    <li>Bar</li>
-    <li>Foobar</li>
-  {/each}
+  {#await getItems}
+    <li>Fetching data...</li>
+  {:then items}
+    {#each items as {name, active, count, slug} }
+      <li class:active>
+        <input hidden type="checkbox" bind:checked={active} id={slug} />
+        <label for={slug}>
+        {#if active}
+          <i class="las la-check-square"></i>
+        {:else}
+          <i class="las la-stop"></i>
+        {/if}
+        {name}
+        </label> ({count})
+      </li>
+    {:else}
+      <li>Foo</li>
+      <li>Bar</li>
+      <li>Foobar</li>
+    {/each}
+  {:catch error}
+    <li>Error!</li>
+  {/await}
 </ul>
 
 <style lang="scss">
