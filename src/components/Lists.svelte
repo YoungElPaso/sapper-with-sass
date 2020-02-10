@@ -92,14 +92,14 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
     <!-- {#each items as {name, active, count, slug} } -->
     {#each items as {markup, active, count, indexed_value}}
       <li class:active>
-        <input type="checkbox" bind:checked={active} id={indexed_value+title.replace(/\s+/g, '')} />
+        <input type="checkbox" hidden bind:checked={active} id={indexed_value+title.replace(/\s+/g, '')} />
         <label for={indexed_value+title.replace(/\s+/g, '')}>
         {#if active}
           <i class="las la-check-square"></i>
         {:else}
           <i class="las la-stop"></i>
         {/if}
-        {markup} {active}
+        {markup}
         </label> ({count})
       </li>
     {:else}
