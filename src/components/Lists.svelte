@@ -5,15 +5,6 @@
 
   import { spring } from "svelte/motion";
 
-  let height = spring(0);
-
-  // $: realHeight = height ? 100 : 0;
-
-  // return active == 1;
-  // };
-  // An animate property.
-  // export let animate;
-
   // An class to switch to horizontal layout.
 
   export let horizontal;
@@ -100,23 +91,40 @@
   // $: realActive = function(active) {
   //   return active == 1;
   // };
+
+  let height = spring(0);
+
+  // $: realHeight = height;
+  // ? 100 : 0;
+
+  // return active == 1;
+  // };
+  // An animate property.
+  // export let animate;
+
+  let collapseFn = function() {
+    let h = collapse ? 0 : 600;
+    collapse = collapse ? false : true;
+    height.set(h);
+  };
 </script>
 
 <!-- Not really a generic list ATM but adaptable to be one.
 TODO: move this to a new component CheckList
 TODO: how do you do HOC or wrapped components in Svelte? -->
 {#if title}
-  <h3 on:click="{()=> collapse= collapse? false:true }">
+  <h3 on:click={collapseFn}>
     {#if collapse}
       <i class="las la-arrow-up"></i>
     {:else}
       <i class="las la-arrow-down"></i>
     {/if}
-  {title || 'List Title'} {$realHeight}
+  {title || 'List Title'}
   </h3>
   {/if}
 
-  <ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse} >
+  <ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse}
+  style="max-height: {$height}px; overflow: hidden;" >
   {#await getItems}
     <li>Fetching data...</li>
   {:then items}
