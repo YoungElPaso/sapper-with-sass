@@ -1,9 +1,9 @@
 <script>
   // Animation for collapse.
-  import { fade } from "svelte/transition";
+  import { fade, fly, slide } from "svelte/transition";
   import { quintOut } from "svelte/easing";
 
-  import { spring } from "svelte/motion";
+  import { spring, tweened } from "svelte/motion";
 
   // An class to switch to horizontal layout.
 
@@ -92,7 +92,7 @@
   //   return active == 1;
   // };
 
-  let height = spring(0);
+  export let height = tweened(0, { duration: 300, delay: 0 });
 
   // $: realHeight = height;
   // ? 100 : 0;
@@ -102,10 +102,20 @@
   // An animate property.
   // export let animate;
 
+  export let noAnimate;
+  if (noAnimate) {
+    height.set(600);
+  }
+
   let collapseFn = function() {
-    let h = collapse ? 0 : 600;
+    if (!noAnimate) {
+      let h = collapse ? 0 : 600;
+      height.set(h);
+    } else {
+      height.set(600);
+    }
+
     collapse = collapse ? false : true;
-    height.set(h);
   };
 </script>
 
@@ -130,23 +140,25 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
   {:then items}
     <!-- {#each items as {name, active, count, slug} } -->
     {#each items as {markup, active, count, indexed_value, item_children}}
-<!-- {#if items} -->
-      <li class:active>
+    <!-- {#if items} -->
+      <li class:active transition:fade="{{delay: 300}}"> 
         <input type="checkbox" hidden bind:checked={active} id={indexed_value+title.replace(/\s+/g, '')} />
         <label for={indexed_value+title.replace(/\s+/g, '')}>
         {#if active}
-          <i class="las la-check-square"></i>
+          <i class="las la-check-square" ></i>
         {:else}
-          <i class="las la-stop"></i>
+          <i class="las la-stop" ></i>
         {/if}
         {markup}
         </label> ({count})
       {#if item_children}
-         <!-- TODO: need to rethink approach to transitions. Its a bit janky. Child list pops in and out of existence. -->
-          <svelte:self bulletStyle="none" items={item_children} title="" collapse />
+         <div transition:fade="{{delay: 300}}">
+          <!-- TODO: need to rethink approach to transitions. Its a bit janky. Child list pops in and out of existence. -->
+            <svelte:self bulletStyle="none" items={item_children} title="" noAnimate  collapse />
+          </div>
       {/if}
       </li>
-<!-- {/if} -->
+      <!-- {/if} -->
     {/each}
   {:catch error}
     <li>Error!</li>

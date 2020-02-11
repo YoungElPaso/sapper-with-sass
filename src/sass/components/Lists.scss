@@ -1,6 +1,10 @@
 
 // Basic Lists styling.
 
+ul {
+  padding: 0;
+}
+
 ul.none {
   list-style: none;
   li {
