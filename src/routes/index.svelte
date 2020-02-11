@@ -64,7 +64,7 @@
 <section>
   <h2>Here's a vertical (regular) check list, already open </h2>
     <Lists bulletStyle="none" 
-    items= {fakeList} title="Types" collapse=true LoadData 
+    items= {fakeList} title="Types"  LoadData 
   />
 </section>
 

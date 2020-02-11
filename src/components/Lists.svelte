@@ -1,8 +1,16 @@
 <script>
   // Animation for collapse.
-  import { slide } from "svelte/transition";
+  import { fade } from "svelte/transition";
   import { quintOut } from "svelte/easing";
 
+  import { spring } from "svelte/motion";
+
+  let height = spring(0);
+
+  // $: realHeight = height ? 100 : 0;
+
+  // return active == 1;
+  // };
   // An animate property.
   // export let animate;
 
@@ -104,7 +112,7 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
     {:else}
       <i class="las la-arrow-down"></i>
     {/if}
-  {title || 'List Title'}
+  {title || 'List Title'} {$realHeight}
   </h3>
   {/if}
 
@@ -114,8 +122,8 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
   {:then items}
     <!-- {#each items as {name, active, count, slug} } -->
     {#each items as {markup, active, count, indexed_value, item_children}}
-{#if collapse}
-      <li class:active transition:slide>
+<!-- {#if items} -->
+      <li class:active>
         <input type="checkbox" hidden bind:checked={active} id={indexed_value+title.replace(/\s+/g, '')} />
         <label for={indexed_value+title.replace(/\s+/g, '')}>
         {#if active}
@@ -130,7 +138,7 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
           <svelte:self bulletStyle="none" items={item_children} title="" collapse />
       {/if}
       </li>
-{/if}
+<!-- {/if} -->
     {/each}
   {:catch error}
     <li>Error!</li>
