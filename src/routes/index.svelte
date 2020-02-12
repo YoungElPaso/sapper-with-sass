@@ -7,6 +7,7 @@
   import Grid from "../components/Grid.svelte";
   import GridItem from "../components/GridItem.svelte";
   import Lists from "../components/Lists.svelte";
+  import BoxWithCollapse from "../components/BoxWithCollapse.svelte";
 
   // Fake list data.
   let fakeList = [
@@ -41,6 +42,10 @@
   <title>Dogfood 🐶🍗🍖</title>
   <!-- <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"> -->
 </svelte:head>
+
+<BoxWithCollapse title="Sample Collapse Box"> 
+  Foobar
+</BoxWithCollapse>
 
 <p>
   By default the headers on this all use serif fonts, while the body text uses
