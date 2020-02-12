@@ -12,7 +12,8 @@
   @use "../sass/components/FontProvider.scss" as FP;
 
   .fp.regular :global(h1),
-  .fp.regular :global(h2) {
+  .fp.regular :global(h2),
+  .fp.regular :global(h3) {
     @include FP.headers;
   }
   .fp.regular :global(p),

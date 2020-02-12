@@ -166,6 +166,8 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
 </ul>
 
 <style lang="scss">
+  @import "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css";
+
   /* Imports basic Lists styling.*/
   @import "../sass/components/Lists.scss";
 
