@@ -5,6 +5,8 @@
 
   import { spring, tweened } from "svelte/motion";
 
+  import { beforeUpdate, afterUpdate } from "svelte";
+
   // Collapsible.
   export let collapse = false;
 
@@ -15,6 +17,34 @@
   let height = tweened();
   // export let height = tweened(contentHeight, { duration: 300, delay: 0 });
 
+  // This is the right idea...to use an async call to set the styled height only after the actual content height is determined.
+  // BUT! I think Svelte has lifecycle functions that are better at this... in fact, the tutorial addresses almost exactly this type of use case...
+  function getInitHeight() {
+    return new Promise(resolve => {
+      resolve(50);
+    });
+  }
+
+  // reference to the box that contains the contents.
+  let box;
+  // let heightSet = false; //
+  beforeUpdate(() => {
+    // Only do this once(?)
+    // if (box && !heightSet) {
+    let actualHeight = box && box.offsetHeight;
+    console.log("actual height", actualHeight);
+    contentHeight = actualHeight;
+    // heightSet = true;
+    // } // TODO: this generally works, needs some work. Should probably only run once. Maybe use onMount? But generally good enough at the moment.
+  });
+
+  async function setHeight() {
+    let result = await getInitHeight();
+    // console.log("promised result", result);
+    return result;
+  }
+
+  setHeight();
   // An animate property.
   // export let animate;
 
@@ -24,9 +54,9 @@
     // TODO: this needs to be the caculated height of the markup being collapsed.
   } else {
     // height.set(contentHeight);
-    console.log(contentHeight);
-    height.set(0);
-    console.log(contentHeight);
+    // console.log(contentHeight);
+    // height.set(0);
+    // console.log(contentHeight);
   }
 
   let collapseFn = function() {
@@ -51,8 +81,11 @@
   {/if}
   {title}
 </h3>
-<div class={'open-'+collapse} bind:offsetHeight={contentHeight} style="height: {$height || contentHeight}px; overflow: hidden; padding: 1em">
-  <slot></slot>
+<div class={'open-'+collapse} bind:offsetHeight={contentHeight} style="height: {$height || 0}px; overflow: hidden;">
+  <div bind:this={box}>
+    <div style="padding:3em">This is filler to test!</div>
+    <slot></slot>
+  </div>
 </div>
 
 <style lang="scss">
