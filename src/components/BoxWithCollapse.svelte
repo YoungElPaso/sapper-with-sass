@@ -5,7 +5,7 @@
 
   import { spring, tweened } from "svelte/motion";
 
-  import { beforeUpdate, afterUpdate } from "svelte";
+  import { beforeUpdate, afterUpdate, onMount } from "svelte";
 
   // Collapsible.
   export let collapse = false;
@@ -14,37 +14,39 @@
   export let title;
 
   let contentHeight;
-  let height = tweened();
+  // let height = tweened();
+  let height = tweened(0, { duration: 100, delay: 0 });
   // export let height = tweened(contentHeight, { duration: 300, delay: 0 });
 
-  // This is the right idea...to use an async call to set the styled height only after the actual content height is determined.
-  // BUT! I think Svelte has lifecycle functions that are better at this... in fact, the tutorial addresses almost exactly this type of use case...
-  function getInitHeight() {
-    return new Promise(resolve => {
-      resolve(50);
-    });
-  }
+  // // This is the right idea...to use an async call to set the styled height only after the actual content height is determined.
+  // // BUT! I think Svelte has lifecycle functions that are better at this... in fact, the tutorial addresses almost exactly this type of use case...
+  // function getInitHeight() {
+  //   return new Promise(resolve => {
+  //     resolve(50);
+  //   });
+  // }
 
   // reference to the box that contains the contents.
   let box;
   // let heightSet = false; //
-  beforeUpdate(() => {
+  // This is a good place for it, but the component monuts before the slot I think.
+  onMount(() => {
     // Only do this once(?)
     // if (box && !heightSet) {
     let actualHeight = box && box.offsetHeight;
-    console.log("actual height", actualHeight);
     contentHeight = actualHeight;
+    console.log("actual height", actualHeight, contentHeight);
     // heightSet = true;
     // } // TODO: this generally works, needs some work. Should probably only run once. Maybe use onMount? But generally good enough at the moment.
   });
 
-  async function setHeight() {
-    let result = await getInitHeight();
-    // console.log("promised result", result);
-    return result;
-  }
+  // async function setHeight() {
+  //   let result = await getInitHeight();
+  //   // console.log("promised result", result);
+  //   return result;
+  // }
 
-  setHeight();
+  // setHeight();
   // An animate property.
   // export let animate;
 
@@ -81,9 +83,9 @@
   {/if}
   {title}
 </h3>
-<div class={'open-'+collapse} bind:offsetHeight={contentHeight} style="height: {$height || 0}px; overflow: hidden;">
+<!-- bind:offsetHeight={contentHeight} -->
+<div class={'open-'+collapse}  style="height: {$height || 0}px; overflow: hidden;">
   <div bind:this={box}>
-    <div style="padding:3em">This is filler to test!</div>
     <slot></slot>
   </div>
 </div>

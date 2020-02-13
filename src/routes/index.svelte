@@ -68,9 +68,11 @@
 
 <section>
   <h2>Here's a vertical (regular) check list, already open </h2>
+  <BoxWithCollapse title="Types">
     <Lists bulletStyle="none" 
     items= {fakeList} title="Types"  LoadData
   />
+</BoxWithCollapse>
 </section>
 
 <Grid quad>

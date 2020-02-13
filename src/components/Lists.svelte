@@ -102,27 +102,27 @@
   // An animate property.
   // export let animate;
 
-  export let noAnimate;
-  if (noAnimate) {
-    height.set(600);
-  }
+  // export let noAnimate;
+  // if (noAnimate) {
+  //   height.set(600);
+  // }
 
-  let collapseFn = function() {
-    if (!noAnimate) {
-      let h = collapse ? 0 : 600;
-      height.set(h);
-    } else {
-      height.set(600);
-    }
+  // let collapseFn = function() {
+  //   // if (!noAnimate) {
+  //   //   let h = collapse ? 0 : 600;
+  //   //   height.set(h);
+  //   // } else {
+  //   //   height.set(600);
+  //   // }
 
-    collapse = collapse ? false : true;
-  };
+  //   collapse = collapse ? false : true;
+  // };
 </script>
 
 <!-- Not really a generic list ATM but adaptable to be one.
 TODO: move this to a new component CheckList
 TODO: how do you do HOC or wrapped components in Svelte? -->
-{#if title}
+<!-- {#if title}
   <h3 on:click={collapseFn}>
     {#if collapse}
       <i class="las la-arrow-up"></i>
@@ -131,10 +131,11 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
     {/if}
   {title || 'List Title'}
   </h3>
-  {/if}
+  {/if} -->
 
-  <ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse}
-  style="max-height: {$height}px; overflow: hidden;" >
+  <!-- <ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse}
+  style="max-height: {$height}px; overflow: hidden;" > -->
+  <ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse}>
   {#await getItems}
     <li>Fetching data...</li>
   {:then items}
