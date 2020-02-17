@@ -12,28 +12,28 @@
   // Fake list data.
   let fakeList = [
     {
-      name: "Canadian Honey",
+      markup: "Canadian Honey",
       active: true,
       count: 22,
-      slug: "canuckistani"
+      indexed_value: "canuckistani"
     },
     {
-      name: "NZ Honey",
+      markup: "NZ Honey",
       active: true,
       count: 10,
-      slug: "kiwistan"
+      indexed_value: "kiwistan"
     },
     {
-      name: "Greek Honey",
+      markup: "Greek Honey",
       active: false,
       count: 200,
-      slug: "greekish"
+      indexed_value: "greekish"
     },
     {
-      name: "Spanish Honey",
+      markup: "Spanish Honey",
       active: false,
       count: 10,
-      slug: "spaneek"
+      indexed_value: "spaneek"
     }
   ];
 </script>
@@ -43,8 +43,10 @@
   <!-- <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"> -->
 </svelte:head>
 
-<BoxWithCollapse title="Sample Collapse Box" noAnimate> 
-  Foobar
+<BoxWithCollapse title="Sample Collapse Box Without Animation" noAnimate> 
+  <Lists bulletStyle="none" 
+    items= {fakeList} title="Samples" 
+  />
 </BoxWithCollapse>
 
 <p>
