@@ -43,7 +43,7 @@
   <!-- <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"> -->
 </svelte:head>
 
-<BoxWithCollapse title="Sample Collapse Box"> 
+<BoxWithCollapse title="Sample Collapse Box" noAnimate> 
   Foobar
 </BoxWithCollapse>
 
@@ -68,7 +68,7 @@
 
 <section>
   <h2>Here's a vertical (regular) check list, already open </h2>
-  <BoxWithCollapse title="Types">
+  <BoxWithCollapse title="Types" >
     <Lists bulletStyle="none" 
     items= {fakeList} title="Types"  LoadData
   />
