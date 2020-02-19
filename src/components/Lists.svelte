@@ -52,24 +52,24 @@
     }
   ];
 
+  // Get's data as an async function.
+  // Returns a an array of items for the list to render.
   async function getData() {
-    // Faking a request.
-    // let fakeRequest = new Promise((res, rej) => {
-    //   setTimeout(() => res(shmitems), 1500);
-    // });
     // Getting data from JSON.
     let response = await fetch("/facetdata.json");
     let data = await response.json();
-    // let items = await fakeRequest;
+
+    // TODO: there should be a dataMapping function that can handle differently structured data.
+    // Get the right key.
     let items = data.facetjson;
-    // console.log(data);
+
+    // Get an array of the values of the items.
     items = Object.values(items);
-    // console.log(items);
     return items;
   }
 
   // LoadData prop.
-  // Controls recursion.
+  // Controls recursion. Svelte allows components to nest themeselves, but often we don't want to fetch data on nested lists.
   export let LoadData = false;
 
   // Defaults to an empty array.
