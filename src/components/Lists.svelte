@@ -69,11 +69,13 @@
   }
 
   // LoadData prop.
-  // Controls recursion. Svelte allows components to nest themeselves, but often we don't want to fetch data on nested lists.
+  // Controls recursion. Svelte allows components to nest themselves, but often we don't want to fetch data on nested lists.
   export let LoadData = false;
 
   // Defaults to an empty array.
   export let items = [];
+
+  // Variable to hold items retrieved from getData.
   let getItems;
   if (LoadData) {
     // Sets the getItems property to the async function.
@@ -81,60 +83,13 @@
   } else {
     getItems = Object.values(items);
   }
-  // console.log("items", items);
-
-  // function isActive(status) {
-  //   let active = status == 1 ? true : false;
-  // }
-  // let active;
-  // // $: realActive = (active == 1) ? true : false;
-  // $: realActive = function(active) {
-  //   return active == 1;
-  // };
-
-  export let height = tweened(0, { duration: 300, delay: 0 });
-
-  // $: realHeight = height;
-  // ? 100 : 0;
-
-  // return active == 1;
-  // };
-  // An animate property.
-  // export let animate;
-
-  // export let noAnimate;
-  // if (noAnimate) {
-  //   height.set(600);
-  // }
-
-  // let collapseFn = function() {
-  //   // if (!noAnimate) {
-  //   //   let h = collapse ? 0 : 600;
-  //   //   height.set(h);
-  //   // } else {
-  //   //   height.set(600);
-  //   // }
-
-  //   collapse = collapse ? false : true;
-  // };
 </script>
 
 <!-- Not really a generic list ATM but adaptable to be one.
 TODO: move this to a new component CheckList
 TODO: how do you do HOC or wrapped components in Svelte? -->
-<!-- {#if title}
-  <h3 on:click={collapseFn}>
-    {#if collapse}
-      <i class="las la-arrow-up"></i>
-    {:else}
-      <i class="las la-arrow-down"></i>
-    {/if}
-  {title || 'List Title'}
-  </h3>
-  {/if} -->
 
-  <!-- <ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse}
-  style="max-height: {$height}px; overflow: hidden;" > -->
+<!-- TODO: remove references to collapse - handled in BoxWCollapse now. -->
   <ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse}>
   {#await getItems}
     <li>Fetching data...</li>
