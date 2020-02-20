@@ -45,7 +45,7 @@
 
 <BoxWithCollapse title="Sample Collapse Box Without Animation" noAnimate> 
   <Lists bulletStyle="none" 
-    items= {fakeList} title="Samples" 
+    items= {fakeList} title="Samples" ordered
   />
 </BoxWithCollapse>
 

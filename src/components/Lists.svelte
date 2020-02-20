@@ -1,22 +1,18 @@
 <script>
-  // Animation for collapse.
+  // Animation for transitions.
   import { fade, fly, slide } from "svelte/transition";
   import { quintOut } from "svelte/easing";
 
   import { spring, tweened } from "svelte/motion";
 
   // An class to switch to horizontal layout.
-
   export let horizontal;
 
   // Ditto for vertical.
   export let vertical;
 
-  // TODO: add code to convert to ordered as option.
+  // If set, use an <ol> for ordered list.
   export let ordered;
-
-  // Collapsible.
-  export let collapse = false;
 
   // Default list-style: disc, options [none, disc, alpha?]
   export let bulletStyle = "disc";
@@ -86,15 +82,24 @@
 </script>
 
 <!-- Not really a generic list ATM but adaptable to be one.
-TODO: move this to a new component CheckList
+TODO: move this to a new component CheckList? - all the form stuff seems to suggest that.
 TODO: how do you do HOC or wrapped components in Svelte? -->
 
 <!-- TODO: remove data loading stuff into own component that does that, loading, then passing results to List -->
 <!-- TODO: get a sample of Fusion API query/results use as sample for results List.  -->
 <!-- TODO: remove a bunch of comments etc, be aggressive about refactoring. -->
 
-<!-- TODO: remove references to collapse - handled in BoxWCollapse now. -->
-  <ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse}>
+<!-- Optional title. -->
+{title} dsfgdfg
+
+<!-- Logic for ordered list markup <ol> --> 
+{#if ordered}
+<!-- Cant have this conditional Structure, svelte errors, probably doesnt want unclosed tag -->
+  <ol class:horizontal class={bulletStyle}>
+{:else}
+  <ul class:horizontal class={bulletStyle}>
+{/if}
+
   {#await getItems}
     <li>Fetching data...</li>
   {:then items}
@@ -114,7 +119,7 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
       {#if item_children}
          <div transition:fade="{{delay: 300}}">
           <!-- TODO: need to rethink approach to transitions. Its a bit janky. Child list pops in and out of existence. -->
-            <svelte:self bulletStyle="none" items={item_children} title="" noAnimate  collapse />
+            <svelte:self bulletStyle="none" items={item_children} title="" noAnimate />
           </div>
       {/if}
       </li>
@@ -123,8 +128,11 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
   {:catch error}
     <li>Error!</li>
   {/await}
-</ul>
-
+{#if ordered}
+  </ol>
+{:else} 
+  </ul>
+{/if}
 <style lang="scss">
   @import "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css";
 
