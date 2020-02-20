@@ -89,6 +89,10 @@
 TODO: move this to a new component CheckList
 TODO: how do you do HOC or wrapped components in Svelte? -->
 
+<!-- TODO: remove data loading stuff into own component that does that, loading, then passing results to List -->
+<!-- TODO: get a sample of Fusion API query/results use as sample for results List.  -->
+<!-- TODO: remove a bunch of comments etc, be aggressive about refactoring. -->
+
 <!-- TODO: remove references to collapse - handled in BoxWCollapse now. -->
   <ul class:horizontal class={bulletStyle + ' ' + 'open-'+collapse}>
   {#await getItems}
