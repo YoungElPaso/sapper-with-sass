@@ -5,7 +5,7 @@
 
   import { spring, tweened } from "svelte/motion";
 
-  import { Component } from "svelte";
+  // import { Component } from "svelte";
 
   // An class to switch to horizontal layout.
   export let horizontal;
@@ -107,7 +107,7 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
 <!-- {:else} -->
   <!-- <ul class:horizontal class={bulletStyle}> -->
   <!-- <svelte:component this={'ul'} /> -->
-  RenderTag: {@html RenderTag}
+  <!-- RenderTag: {@html RenderTag} -->
   <!-- TODO: check out using 'Use' if that helps  -->
   <!-- TODO: perhaps Each block could work like a switch since there's fallback to each? -->
   <!-- TODO: yeah, Each could be used if restructure array's a bit...I think. -->
