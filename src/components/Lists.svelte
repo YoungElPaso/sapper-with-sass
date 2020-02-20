@@ -5,6 +5,8 @@
 
   import { spring, tweened } from "svelte/motion";
 
+  import { Component } from "svelte";
+
   // An class to switch to horizontal layout.
   export let horizontal;
 
@@ -79,6 +81,12 @@
   } else {
     getItems = Object.values(items);
   }
+
+  // let RenderTag = ordered ? "<ol>" : "<ul>";
+  // TODO: trying ClientSide API for dynamic component.
+  // const RenderTag = new Component({
+  //   target: null
+  // });
 </script>
 
 <!-- Not really a generic list ATM but adaptable to be one.
@@ -89,17 +97,26 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
 <!-- TODO: get a sample of Fusion API query/results use as sample for results List.  -->
 <!-- TODO: remove a bunch of comments etc, be aggressive about refactoring. -->
 
-<!-- Optional title. -->
-{title} dsfgdfg
+<!-- Optional title? -->
+<!-- {title} -->
 
 <!-- Logic for ordered list markup <ol> --> 
-{#if ordered}
+<!-- {#if ordered} -->
 <!-- Cant have this conditional Structure, svelte errors, probably doesnt want unclosed tag -->
-  <ol class:horizontal class={bulletStyle}>
-{:else}
-  <ul class:horizontal class={bulletStyle}>
-{/if}
+  <!-- <ol class:horizontal class={bulletStyle}> -->
+<!-- {:else} -->
+  <!-- <ul class:horizontal class={bulletStyle}> -->
+  <!-- <svelte:component this={'ul'} /> -->
+  RenderTag: {@html RenderTag}
+  <!-- TODO: check out using 'Use' if that helps  -->
+  <!-- TODO: perhaps Each block could work like a switch since there's fallback to each? -->
+  <!-- TODO: yeah, Each could be used if restructure array's a bit...I think. -->
+<!-- {/if} -->
+ 
 
+<!-- TODO: Yeah, probably should just have a wrapper element ListShell or something that determines type of list that renders actual list items in ListItems component. -->
+<!-- TODO: Could I use the Client Side API to dynamically do this? Probably. -->
+  <ul class:horizontal class={bulletStyle}>
   {#await getItems}
     <li>Fetching data...</li>
   {:then items}
@@ -128,11 +145,11 @@ TODO: how do you do HOC or wrapped components in Svelte? -->
   {:catch error}
     <li>Error!</li>
   {/await}
-{#if ordered}
+<!-- <!-- {#if ordered}
   </ol>
-{:else} 
+{:else}  --> 
   </ul>
-{/if}
+<!-- {/if} -->
 <style lang="scss">
   @import "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css";
 
